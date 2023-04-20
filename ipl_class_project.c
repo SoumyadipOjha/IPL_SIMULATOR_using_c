@@ -30,7 +30,7 @@ void display_teams()
 
     for (int i = 0; i < num_teams; i++)
     {
-        printf("NAME OF TEAM NO. %d IS %s\n\n", i + 1, teams[i].name); // FOR SHOWING THE NAMES OF THE TEAM
+        printf("NAME OF TEAM NO. %d IS  ** %s **\n\n", i + 1, teams[i].name); // FOR SHOWING THE NAMES OF THE TEAM
         printf(" PLAYERS OF THE TEAM  ::   \n");
         printf("\n");
         for (int j = 0; j < teams[i].num_players; j++)
@@ -44,7 +44,7 @@ void display_teams()
 
 void add_team()
 {
-    printf("\n\n********************************************************************************************************************************\n");
+    printf("\n\n********************************************\n");
 
     printf("ENTER THE NAME OF THE NEW  TEAM    ::     ");
     scanf("%s", teams[num_teams].name); // FOR TAKING THE TEAM NAME AS INPUT
@@ -60,7 +60,7 @@ void add_team()
     }
     num_teams++;
     printf("Team added successfully.\n");
-    printf("\n\n********************************************************************************************************************************\n");
+    printf("\n\n********************************************\n");
 }
 
 void delete_team()
@@ -158,6 +158,18 @@ void generate_schedule()
     num_matches = match_index;
     printf("\n                               ----------------------------------------------------\n");
 }
+void show_schedule()
+{
+
+    for (int i = 0; i < num_matches - 1; i++)
+    {
+        for (int j = i + 1; j < num_matches; j++)
+        {
+            printf("The Schedule fixed for teams %s and %s is: ", teams[i].name, teams[j].name);
+            printf("%s\n", matches[i].date);
+        }
+    }
+}
 int main()
 {
     do
@@ -172,11 +184,12 @@ int main()
         printf("\n 3.Delete team.");
         printf("\n 4.Update team.");
         printf("\n 5.Generate schedule.");
-        // printf("\n 6.Show schedule.");
+        printf("\n 6.Show schedule.");
+        printf("\n 7.exit.");
 
-        printf("\n\n********************************************************************************************************************************");
+        printf("\n\n********************************************");
         printf("\n                               Choose any one of the above options according to yourself:");
-        printf("\n\n********************************************************************************************************************************");
+        printf("\n\n********************************************");
         printf("\n option selected :");
 
         int num;
@@ -209,9 +222,16 @@ int main()
 
             generate_schedule();
             break;
+        case 6:
+
+            show_schedule();
+            break;
+        case 7:
+            exit(0);
+            break;
 
         default:
-            printf("enter number between 1 to 5");
+            printf("enter number between 1 to 7");
         }
     } while (1);
 
